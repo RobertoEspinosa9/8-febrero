@@ -1,47 +1,49 @@
-int LEDC = 5;
+int LEDA=7;
+int LEDB=6;
+int LEDC=5;
 int t1; int t2; int t3; int t4;
-configuración vacía () {
-  Serial.begin (9600);
-  Serial.println ("¿Cuantos milisegundos en el LED amarillo?");
-  while (Serial.available () == 0) {
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Â¿Cuantos milisegundos deseas que permanezca encendido el LED amarillo?");
+  while(Serial.available()==0){
   }
-  t1 = Serial.parseInt ();
-  pinMode (LEDA, SALIDA);
-  ////////////////////////////////////////////////// //////////////////////
-  Serial.println ("");
-  Serial.println ("¿Cuantos milisegundos en el LED verde?");
-  while (Serial.available () == 0) {
+  t1=Serial.parseInt();
+  pinMode(LEDA,OUTPUT);
+  ////////////////////////////////////////////////////////////////////
+  Serial.println("");
+  Serial.println("Â¿Cuantos milisegundos deseas que permanezca encendido el LED verde?");
+  while(Serial.available()==0){
   }
-  t2 = Serial.parseInt ();
-    pinMode (LEDB, SALIDA);
+  t2=Serial.parseInt();
+    pinMode(LEDB,OUTPUT);
 
-/////////////////////////////////////////////
-   Serial.println ("");
-    Serial.println ("¿Cuantos milisegundos en el LED rojo?");
-  while (Serial.available () == 0) {
+/////////////////////////////////////////
+   Serial.println("");
+    Serial.println("Â¿Cuantos milisegundos deseas que permanezca encendido el LED rojo?");
+  while(Serial.available()==0){
   }
-  t3 = Serial.parseInt ();
-     pinMode (LEDC, SALIDA);
+  t3=Serial.parseInt();
+     pinMode(LEDC,OUTPUT);
 
-     ///////////////////////////////
-     Serial.println ("");
-    Serial.println ("¿Cuantos milisegundos que desean permanentemente pueden apagar los leds entre ellos?");
-  while (Serial.available () == 0) {
+     ///////////////////////////
+     Serial.println("");
+    Serial.println("Â¿Cuantos milisegundos deseas que permanezcan apagados los leds entre ellos?");
+  while(Serial.available()==0){
   }
-  t4 = Serial.parseInt ();
+  t4= Serial.parseInt();
 }
 
-bucle de vacío () {
-escritura digital (LEDA, ALTA);
-retardo (t1);
-escritura digital (LEDA, BAJA);
-retraso (t4);
-escritura digital (LEDB, ALTA);
-retardo (t2);
-escritura digital (LEDB, BAJA);
-retraso (t4);
-escritura digital (LEDC, ALTA);
-retraso (t3);
-escritura digital (LEDC, BAJA);
-retraso (t4);
+void loop() {
+digitalWrite(LEDA,HIGH);
+delay(t1);
+digitalWrite(LEDA,LOW);
+delay(t4);
+digitalWrite(LEDB,HIGH);
+delay(t2);
+digitalWrite(LEDB,LOW);
+delay(t4);
+digitalWrite(LEDC,HIGH);
+delay(t3);
+digitalWrite(LEDC,LOW);
+delay(t4);
 }
